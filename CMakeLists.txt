@@ -4,7 +4,7 @@ project(blur_omp C)
 set(CMAKE_C_STANDARD 90)
 set(CMAKE_C_EXTENSIONS OFF)
 
-find_package(PNG 1.6 REQUIRED)
+find_package(PNG REQUIRED)
 find_package(OpenMP REQUIRED)
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
