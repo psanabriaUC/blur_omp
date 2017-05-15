@@ -35,12 +35,13 @@ int main(int argc, char *argv[]) {
 
     max_threads = 2 * omp_get_max_threads();
 
-    printf("Parallel form 1\n");
+    printf("Parallel form\n");
+    printf("#Threads\tTime (s)\tSpeedup\n");
     for (i = 1; i <= max_threads; i++) {
         start = omp_get_wtime();
         parallel_execution(filename, "out_parallel.png", kernel_size, iterations, i);
         end = omp_get_wtime();
-        printf("Parallel execution with %d threads: %0.4f secs. Speedup: %0.4f\n", i, end - start, t1 / (end - start));
+        printf("%d\t%0.4f\t%0.4f\n", i, end - start, t1 / (end - start));
     }
 
     return 0;
