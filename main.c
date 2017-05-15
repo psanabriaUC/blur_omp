@@ -77,10 +77,13 @@ void parallel_execution(const char *input_path, const char *output_path, unsigne
     for (c = 0; c < iterations; c++) {
         memset(output_image->raw_data, 0, output_image->height * output_image->width * 3 * sizeof(float));
 
-        #pragma omp parallel for schedule(guided) private(i, j) num_threads(threads)
-        for (i = 0; i < image->height; i++) {
-            for (j = 0; j < image->width; j++) {
-                apply_convolution(image->data, output_image->data, output_image->width, output_image->height, kernel_size, i, j);
+        #pragma omp parallel num_threads(threads)
+        {
+            #pragma omp for schedule(guided) private(i, j) nowait
+            for (i = 0; i < image->height; i++) {
+                for (j = 0; j < image->width; j++) {
+                    apply_convolution(image->data, output_image->data, output_image->width, output_image->height, kernel_size, i, j);
+                }
             }
         }
 
