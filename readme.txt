@@ -1,9 +1,9 @@
 Compilation:
 $ mkdir build
 $ cd build
-$ cmake ..
+$ cmake -DCMAKE_BUILD_TYPE=Release ..
 $ make
 
 
 Usage:
-Usage: blur_omp image.png kernel_size iterations
+$ ./blur_omp image.png kernel_size iterations
