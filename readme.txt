@@ -1,3 +1,8 @@
+Requirements:
+- CMake
+- libpng
+- OpenMP compiler support
+
 Compilation:
 $ mkdir build
 $ cd build
